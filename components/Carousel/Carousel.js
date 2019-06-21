@@ -9,7 +9,7 @@ class Carousel {
         console.log(this.images);
         this.images[this.index].style.display = 'flex';
         this.rightBtn.addEventListener('click', () => this.slideImgRight())
-        this.leftBtn.addEventListener('click', () => this.slideImgRight())
+        this.leftBtn.addEventListener('click', () => this.slideImgLeft())
     }
 
     slideImgRight(){
@@ -18,12 +18,14 @@ class Carousel {
                 this.images[this.index].style.display = 'none';
                 this.index = 0;
                 this.images[this.index].style.display = 'flex';
+                TweenMax.from(this.images[this.index], 1, {x: 1500});
                 break;
 
             case false:
                 this.images[this.index].style.display = 'none';
                 this.index++;
-                this.images[this.index].style.display = 'flex';
+                this.images[this.index].style.display = 'flex'
+                TweenMax.from(this.images[this.index], 1, {x: 1500});
                 break;
         }
     }
@@ -34,11 +36,13 @@ class Carousel {
                 this.images[this.index].style.display = 'none';
                 this.index = this.images.length - 1;
                 this.images[this.index].style.display = 'flex';
+                TweenMax.from(this.images[this.index], 1, {x: -1500});
 
             case false:
                 this.images[this.index].style.display = 'none';
                 this.index--;
                 this.images[this.index].style.display = 'flex';
+                TweenMax.from(this.images[this.index], 1, {x: -1500});
                 break;
         }
     }
