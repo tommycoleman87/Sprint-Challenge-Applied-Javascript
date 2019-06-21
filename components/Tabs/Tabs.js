@@ -54,7 +54,7 @@ class TabCard {
   constructor(cardElement){
     // Assign this.cardElement to the cardElement DOM reference
      this.cardElement = cardElement;
-     console.log(this.cardElement)
+     
   }
   selectCard(){
     // Update the style of this.cardElement to display = "flex"
