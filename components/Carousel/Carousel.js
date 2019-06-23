@@ -1,8 +1,56 @@
 class Carousel {
+    constructor(element){
+        this.element = element;
+        this.images = Array.from(this.element.querySelectorAll('img'));
+        this.rightBtn = this.element.querySelector('.right-button');
+        this.leftBtn = this.element.querySelector('.left-button');
+        this.index = 0;
+        console.log(this.leftBtn)
+        console.log(this.images);
+        this.images[this.index].style.display = 'flex';
+        this.rightBtn.addEventListener('click', () => this.slideImgRight())
+        this.leftBtn.addEventListener('click', () => this.slideImgLeft())
+    }
+
+    slideImgRight(){
+        switch(this.index === this.images.length - 1) {
+            case true:
+                this.images[this.index].style.display = 'none';
+                this.index = 0;
+                this.images[this.index].style.display = 'flex';
+                TweenMax.from(this.images[this.index], 1, {x: 1500});
+                break;
+
+            case false:
+                this.images[this.index].style.display = 'none';
+                this.index++;
+                this.images[this.index].style.display = 'flex'
+                TweenMax.from(this.images[this.index], 1, {x: 1500});
+                break;
+        }
+    }
+
+    slideImgLeft(){
+        switch(this.index === 0) {
+            case true:
+                this.images[this.index].style.display = 'none';
+                this.index = this.images.length - 1;
+                this.images[this.index].style.display = 'flex';
+                TweenMax.from(this.images[this.index], 1, {x: -1500});
+
+            case false:
+                this.images[this.index].style.display = 'none';
+                this.index--;
+                this.images[this.index].style.display = 'flex';
+                TweenMax.from(this.images[this.index], 1, {x: -1500});
+                break;
+        }
+    }
 
 }
 
-let carousel = document.querySelector();
+let carousel = document.querySelector('.carousel');
+carousel = new Carousel(carousel)
 
 /* If You've gotten this far, you're on your own! Although we will give you some hints:
     1. You will need to grab a reference to the carousel, and in it grab the left and right buttons
